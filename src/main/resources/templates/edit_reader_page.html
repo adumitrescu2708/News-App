@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.tymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit page</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .box {
+            margin: auto;
+            padding: 25px 50px;
+            width: 300px;
+            min-height: 115px;
+            background: #fff;
+            border-left: 5px solid #9b2;
+            box-shadow: 0 0 20px rgba(0,0,0,.15);
+            font: 15px/15px Arial, Helvetica, sans-serif;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+<h1> <strong> Edit preferences! </strong></h1>
+<hr>
+<h2> <span class="weak">If no entry is selected, the preferences won't be updated.</span></h2>
+<div class="form">
+    <form method="post" action="/homepage/edit" th:object="${dummy_user}">
+        <hr>
+        <div class="box">
+            <select th:field="*{tags}" multiple>
+                <option th:each="tagTypee : ${tagType}" th:value="${tagTypee}" th:text="${tagTypee.name}"></option>
+            </select>
+        </div>
+        <hr>
+        <br>
+        <!-- Help -->
+        <div class="buttons">
+            <input type="submit" id="submit" value="Save updates" style="display:block">
+        </div>
+        <br>
+
+    </form>
+</div>
+
+</body>
+</html>

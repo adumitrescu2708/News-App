@@ -1,0 +1,81 @@
+@Name:      Dumitrescu Alexandra
+@Contact:   alexandradumitrescu01@outlook.com
+@PhoneNo:   0735873115
+
+NewsApp
+17.04.2022
+
+@ Table of Contents:
+        # Technical Details
+        # Structure of the project
+        # Work Flow
+        # Error Manager
+        # News Updates
+        # What can/should be improved
+
+
+@ Technical Details:
+        # The News App was implemented using Java with Spring Framework for back-end and
+          CSS/HTML for front-end, with PostgreSQL.
+        # To run this app use the command mvn spring-boot:run in the src.main.java.com.form
+        # To initiate the database you have to replace password and username in application.properties
+          with self data.
+        # You need to install dependencies in the pom.xlm
+
+@ Structure of the Project
+        # com.form.services :           - Services of the MVC - User Services & Posts Services
+        # com.form.repositories:        - Repositories (JPA) - User Repository & Posts Repository
+        # com.form.model:               - Objects for Entities in the Platform:
+                                            -- Users: User Reader Journalist
+                                            -- Enums: Roles Tags
+                                            -- Components: Timeline Post
+                                            -- Strategies: Observer Pattern for updates handling
+        # com.form.controller:          - Controller of the MVC
+
+        # resources:                    - templates: all HTML files
+                                        - static: CSS style
+
+@ Work Flow
+        # The App starts from the index page.
+        # All requests are handled in the controller class
+        # After index, Login Page or Register Page pop up
+                ## Register:
+                -- In the register Page, a role must be checked (Reader/Journalist)
+                -- In case of a reader, if the tags options are not checked
+                   an error page triggers. In case of a Journalist the page isn't
+                   accessed, due to the fact that a Journalist mustn't have tags
+                -- In case of an already registered user, another error page
+                   pops up.
+
+                # Login:
+                -- In case of a non-existent user, an error page pops up and
+                   the user is required to retry or register.
+        # Depending on the type of the user, the Controller redirects
+          to a specific homepage.
+        # The admin, Journalist, is required to enter a News Post.
+        # The reader is updated with the news entered and can choose to edit
+        its preferences.
+
+@ Error Manager
+        # Although many scenarios could occur, I tried to cover te minimum
+        --> If a user is already registered
+        --> If a user doesn't exist
+        --> If a user isn't logged in (redirecting to index page)
+        --> If a reader doesn't properly check its preference tags
+        # Many other scenarios might occur while using this demo-app
+
+@ Updates in the Posts Repository
+        # We tried to simulate the updates using a TreeSet of Posts in the
+          Timeline of each user with a Comparator of Dates in order to store
+          the Posts in chronological order.
+
+        # What is more, we tried to integrate the Observer Pattern, since
+          whenever a new post arrives, the corresponding users should be updated
+
+@ What can/shall be improved
+        # More error handling
+        # Multiple testing on the functionality of the app
+        # Whenever an update in the tags of a user occurs, its corresponding list
+        is cleared and a new query within all the elements of the posts repository
+        happens. This is not time efficient, a hashtable could be used.
+

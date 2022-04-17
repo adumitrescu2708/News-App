@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.tymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Publish page</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .box {
+            margin: auto;
+            padding: 25px 50px;
+            width: 300px;
+            min-height: 115px;
+            background: #fff;
+            border-left: 5px solid #9b2;
+            box-shadow: 0 0 20px rgba(0,0,0,.15);
+            font: 15px/15px Arial, Helvetica, sans-serif;
+            color: #666;
+        }
+        .button {
+            display: flex;
+            color: #666;
+            justify-content: center;
+            font: 12px/15px Arial, Helvetica, sans-serif;
+        }
+
+    </style>
+</head>
+<body>
+<div class="buttons">
+    <h1> <strong> Thank you! </strong></h1>
+</div>
+<div class="box">
+    <form method="post" action="/admin/homepage">
+        <p> <strong>Your publish has been updated to the repository.</strong> </p>
+    </form>
+</div>
+<br>
+<div class="button">
+<a href="/admin/homepage">
+    <input style="text-align: center" type="button" value="Publish a new post!" />
+</a>
+</div>
+<br>
+<div class="button">
+    <a href="/login">
+        <input style="text-align: center" type="button" value="Back to login!" />
+    </a>
+</div>
+</body>
+</html>

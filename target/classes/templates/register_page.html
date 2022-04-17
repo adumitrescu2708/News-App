@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.tymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<!-- icons  -->
+<!-- icons  -->
+
+
+<body>
+<div class="form">
+
+    <form method="post" action="/register" th:object="${registerRequest}">
+        <h2>Register</h2>
+        <!-- Login -->
+
+        <div class="input-box">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" placeholder="Username">
+        </div>
+
+        <div class="input-box">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="Password">
+        </div>
+        <!-- Submit -->
+        <div class="form-group">
+            <label th:for="role"> Role</label>
+            <select th:field="*{role}">
+                <option value="0">select role</option>
+                <option th:each="roleType: ${roleTypes}"
+                        th:text="${roleType.name}"
+                        th:value="${roleType}"></option>
+            </select>
+        </div>
+        <div class="custom-select">
+            <select th:field="*{tags}" multiple>
+                <option th:each="tagTypee : ${tagType}" th:value="${tagTypee}" th:text="${tagTypee.name}"></option>
+            </select>
+        </div>
+        <!-- Help -->
+        <div class="buttons">
+                <input type="submit" id="submit" value="Register">
+        </div>
+        <br>
+
+    </form>
+</div>
+<div class="buttons">
+    <a href="/login" class="register">Back to Login!</a>
+</div>
+</body>
+</html>

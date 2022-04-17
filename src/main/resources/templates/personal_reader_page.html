@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.tymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reader Page</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .box {
+            margin: auto;
+            padding: 25px 50px;
+            width: 600px;
+            min-height: 115px;
+            background: #fff;
+            border-left: 5px solid #9b2;
+            box-shadow: 0 0 20px rgba(0,0,0,.15);
+            font: 15px/15px Arial, Helvetica, sans-serif;
+            color: #666;
+        }
+        span.weak {
+            font-weight: lighter;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+<div class="buttons">
+    <h1> <strong> Latest News for <span th:text="${username}"></span> </strong></h1>
+</div>
+<div class="buttons">
+    <a href="/homepage/edit" class="register">Want to edit preferences?</a>
+</div>
+<div class="form">
+    <form method="post" action="/admin/homepage" th:object="${post}">
+        <p>    </p>
+        <tr th:each="post : ${posts}">
+            <div class="box">
+                <h1> <strong> <td th:text="${post.title}"> Title </td> </strong>  </h1>
+                <hr>
+                <h2> <span class="weak"><td th:text="${post.getLastUpdateDate}" ></td> published by <td th:text="${post.author}" ></td></span></h2>
+                <hr>
+            <td th:text="${post.content}"> Content</td>
+
+            </div>
+        </tr>
+    </form>
+</div>
+</body>
+</html>
